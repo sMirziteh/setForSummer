@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+
+    <title>Login and Register</title>
+
+    <script>
+        
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper blue" id="top">
+            <a href="#" class="brand-logo">CodingDojo Wall</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="section">
+                <div class="col l6 header">
+                    <h3>Login and Register</h3>
+                </div>
+                <div class="col l6">
+                    {% if messages %}
+                    <ul class="messages red-text">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>**{{ message }}**</li>
+                            {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="section">
+                <div class="row">
+                    <div class="col l7">
+                        <form action="/processRegistration" method="post">
+                            {% csrf_token %}
+                            <h4>Register here!</h4>
+                            <div class="row">
+                                <div class="input-field col l8">
+                                    <input type="text" name="first_name" id="fname" class="validate" value="{{request.session.first_name}}">
+                                    <label for="fname">First Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l8">
+                                    <input id="lname" type="text" name="last_name" class="validate" value="{{request.session.last_name}}">
+                                    <label for="lname">Last Name</label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l8">
+                                    <input id="text" type="text" name="email" class="validate" value="{{request.session.email}}">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l8">
+                                    <input type="password" id="pword" name="pw" class="validate">
+                                    <label for="pword">Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l8">
+                                    <input type="password" id="cpword" name="cpw" class="validate">
+                                    <label for="cpword">Confirm Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l3">
+                                    <button type="submit" class="btn btn-large waves-effect waves-dark">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col l5">
+                        <form action="/login" method="post">
+                            {% csrf_token %}
+                            <h4>Login here!</h4>
+                            <div class="row">
+                                <!-- <div class="col l8">
+                                </div> -->
+                                <div class="input-field col l8">
+                                    <input type="text" class="validate" name="lemail" id="lemail" value="{{request.session.lemail}}">
+                                    <label for="lemail">Email</label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l8">
+                                    <input type="password" class="validate" name="lpassword" id="lpw">
+                                    <label for="lpw">Password</label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l3">
+                                    <button type="submit" class="btn btn-large waves-effect waves-dark">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
