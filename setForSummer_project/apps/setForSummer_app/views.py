@@ -14,4 +14,10 @@ def activities(request):
 def learning(request):
     return render(request, 'setForSummer_app/learning.html')
 
+def faqs(request):
+    return render(request, 'setForSummer_app/faqs.html')
+
+def contact(request):
+    return render(request, 'setForSummer_app/contact.html')
+
 # Create your views here.

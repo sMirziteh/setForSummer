@@ -6,4 +6,6 @@ urlpatterns = [
     url(r'^food$', views.food),
     url(r'^activities$', views.activities),
     url(r'^learning$', views.learning),
+    url(r'^faqs$', views.faqs),
+    url(r'^contact$', views.contact),
 ]
