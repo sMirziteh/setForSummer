@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^setHome$', views.setHome),
     url(r'^food$', views.food),
     url(r'^activities$', views.activities),
+    url(r'^map.html/(?P<id>\d+)$'), views.map_html),
 ]
