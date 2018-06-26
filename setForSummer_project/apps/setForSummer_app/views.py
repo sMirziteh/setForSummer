@@ -8,4 +8,7 @@ def setHome(request):
 def food(request):
     return render(request, 'setForSummer_app/food.html')
 
+def activities(request):
+    return render(request, 'setForSummer_app/activites.html')
+
 # Create your views here.
