@@ -9,6 +9,9 @@ def food(request):
     return render(request, 'setForSummer_app/food.html')
 
 def activities(request):
-    return render(request, 'setForSummer_app/activites.html')
+    return render(request, 'setForSummer_app/activities.html')
+
+def learning(request):
+    return render(request, 'setForSummer_app/learning.html')
 
 # Create your views here.
