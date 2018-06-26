@@ -7,13 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"
-    />
+    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-
-
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();
@@ -111,7 +108,7 @@
                                 <li>Snack: 3:00PM – 4:00P</li>
                             </ul>
                         </div>
-                        <div class="collapsible-body ">
+                        <div class="collapsible-body" id="8">
                             map
                         </div>
                     </li>
@@ -133,6 +130,7 @@
             </div>
         </div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGQK9ytpuYkktbj0c83lAjis8i6Kg0lls&libraries=places&callback=initMap" async defer></script>
 </body>
 
 </html>
