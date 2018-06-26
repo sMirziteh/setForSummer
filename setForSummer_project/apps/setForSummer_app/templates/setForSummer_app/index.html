@@ -16,9 +16,9 @@
 
     <script>
         $(document).ready(function () {
+            $('.slider').slider();
             $('.sidenav').sidenav();
             $('.sidenav').sidenav('draggable', true);
-            $('.slider').slider();
             // $('.carousel').carousel();
         });
     </script>
@@ -31,6 +31,9 @@
             position: fixed;
             top: 90%;
             left: 89%;
+        }
+        .flow-text {
+            text-align: justify;
         }
     </style>
 
@@ -94,37 +97,48 @@
     <div class="section"></div>
     <div class="container">
         <div class="row">
+            <!-- supposed to be a slider/caruosel -->
             <div class="slider">
                 <ul class="slides">
                     <li>
-                        <div class="caption">
-                            <h3>THis is a test div</h3>
-                            <h5>THis is a test div</h5>
-
+                        <img src="https://lorempixel.com/580/250/nature/1">
+                        <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
                     </li>
                     <li>
-                        <div class="caption">
-                            <h3>THis is a test div</h3>
-                            <h5>THis is a test div</h5>
-
+                        <img src="https://lorempixel.com/580/250/nature/2">
+                        <!-- random image -->
+                        <div class="caption left-align">
+                            <h3>Left Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
                     </li>
                     <li>
-                        <div class="caption">
-                            <h3>THis is a test div</h3>
-                            <h5>THis is a test div</h5>
-
+                        <img src="https://lorempixel.com/580/250/nature/3">
+                        <!-- random image -->
+                        <div class="caption right-align">
+                            <h3>Right Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         </div>
                     </li>
-
+                    <li>
+                        <img src="https://lorempixel.com/580/250/nature/4">
+                        <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="row">
             <div class="card col s12">
                 <h3 class="center-align green-text">What We Do</h3>
-                <p class="flow-text">
+                <p class="flow-text" >
                     Set for Summer aims to connect low-income & underprivileged youth to resources that they may lack during the Summer break
                     from school. While most kids look forward to the break from class and homework, many low-income parents
                     have tough obstacles to face; ranging from costs of adequate daycare to simply providing food three times
@@ -132,14 +146,14 @@
                 </p>
                 <p class="flow-text">
                     We bring the specific resources together in one place so that families, teachers, and organizations can find the help they
-                    need to care for their children and ensure all our children have a great Summer.
+                    need to care for their children and ensure all have a great Summer.
                 </p>
             </div>
         </div>
         <div class="row" id="food">
             <div class="card col s12">
                 <h3 class="center-align green-text">Food Resources</h3>
-                <p class="flow-text">
+                <p class="flow-text" >
                     Kids who rely on school meals can struggle with hunger during the Summer. 472,000 Washington kids count on reduced-free and
                     free school meals during the school year, only 14 percent get food from summer programs.
                 </p>
@@ -153,9 +167,9 @@
                 <a href="" name='activities'></a>
                 <h3 class="center-align green-text">Activity Resources</h3>
                 <p class="flow-text">
-                    Lack of affordable activites during the Summer leaves parents with little options for child care. Many children are 
-                    are forced to stay at home, alone with no supervision. Bellow are resources for camps, programs and activities
-                    that are free or low-cost to keep children busy while parents are at work.
+                    Lack of affordable activites during the Summer leaves parents with little options for child care. Many children are are forced
+                    to stay at home, alone with no supervision. Bellow are resources for camps, programs and activities that
+                    are free or low-cost to keep children busy while parents are at work.
                 </p>
                 <div class="card-action right hoverable">
                     <a href="/activities" class="center-align">find activities</a>
@@ -166,9 +180,9 @@
             <div class="card col s12">
                 <h3 class="center-align green-text">Learning Opportunities</h3>
                 <p class="flow-text">
-                    Students who fall behind over the summer are less likely to graduate from high school or go to college.
-                    The cumulative effect of lack of healthy food, safe places to spend the day, and discontinuation of learning can 
-                    leave low-income students far behind their peers.
+                    Students who fall behind over the summer are less likely to graduate from high school or go to college. The cumulative effect
+                    of lack of healthy food, safe places to spend the day, and discontinuation of learning can leave low-income
+                    students far behind their peers.
                 </p>
                 <div class="card-action right hoverable">
                     <a href="/learning" class="center-align">find learning opportunities</a>
@@ -186,33 +200,27 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <h5 class="white-text">SetForSummer.org</h5>
+                    <p class="grey-text text-lighten-4">This site was built using Django at CodingDojo Seattle</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                            <a class="grey-text text-lighten-3" href="/contact">Contact</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
-                        </li>
-                        <!-- <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+                            <a class="grey-text text-lighten-3" href="/faqs">FAQs</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
-                        </li> -->
+                            <a class="grey-text text-lighten-3" href="/about">About this project</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-copyright">
-            <!-- <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div> -->
+            
         </div>
     </footer>
 
