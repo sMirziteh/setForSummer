@@ -13,11 +13,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
-    <!-- <link type="text/javascript" href="{% static 'setForSummer_app/javascript/materialize.js'%}" /> -->
 
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();
+            $('.sidenav').sidenav('draggable', true);
             $('.carousel').carousel();
             $('.slider').slider();
         });
@@ -27,55 +27,59 @@
 
 <body>
     <style>
-        #top-btn{
+        #top-btn {
             position: fixed;
             top: 90%;
             left: 89%;
         }
     </style>
 
-<a href="" name='top'></a>
-        <nav class="nav-extended blue accent-3 ">
-            <div class="nav-wrapper" >
-                <!-- <p class="brand-logo yellow-text">Set For Summer</p> -->
-                <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.5rem" >Set For Summer</a>
-                <a href="#" class="brand-logo yellow-text hide-on-small-only">Set For Summer</a>
-                <a href="#" data-target="mobilenav" class="sidenav-trigger yellow-text">
-                    <i class="material-icons">menu</i>
-                </a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down yellow-text">
-                    <li>
-                        <a href="sass.html">FAQs</a>
-                    </li>
-                    <li>
-                        <a href="badges.html">Contact</a>
-                    </li>
-                    <li>
-                        <a href="collapsible.html">Log In / Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav-content yellow-text" >
-                <ul class="tabs tabs-transparent yellow-text" >
-                    <li class="tab">
-                        <a href="#home" class="active">Home</a>
-                    </li>
-                    <li class="tab">
-                        <a href="#food" class="">Food</a>
-                    </li>
-                    <li class="tab">
-                        <a href="#activities">Activities</a>
-                    </li>
-                    <li class="tab">
-                        <a href="#learning">Learning</a>
-                    </li>
-                    <!-- <li class="tab">
+    <a href="" name='top'></a>
+    <nav class="nav-extended blue accent-3 ">
+        <div class="nav-wrapper">
+            <!-- <p class="brand-logo yellow-text">Set For Summer</p> -->
+            <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.7rem">
+                <b>Set For Summer</b>
+            </a>
+            <a href="#" class="brand-logo yellow-text hide-on-small-only">
+                <b>Set For Summer</b>
+            </a>
+            <a href="#" data-target="mobilenav" class="sidenav-trigger yellow-text">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down yellow-text">
+                <li>
+                    <a href="sass.html">FAQs</a>
+                </li>
+                <li>
+                    <a href="badges.html">Contact</a>
+                </li>
+                <li>
+                    <a href="collapsible.html">Log In / Sign Up</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-content yellow-text">
+            <ul class="tabs tabs-transparent yellow-text">
+                <li class="tab">
+                    <a href="#home" class="active">Home</a>
+                </li>
+                <li class="tab">
+                    <a href="/food" class="">Food</a>
+                </li>
+                <li class="tab">
+                    <a href="#activities">Activities</a>
+                </li>
+                <li class="tab">
+                    <a href="#learning">Learning</a>
+                </li>
+                <!-- <li class="tab">
                         <a href="#test4">Test 4</a>
                     </li> -->
-                </ul>
-            </div>
-        </nav>
-<div class="section" id="top"></div>
+            </ul>
+        </div>
+    </nav>
+    <div class="section" id="top"></div>
     <ul class="sidenav" id="mobilenav">
         <li>
             <a href="sass.html">FAQs</a>
@@ -88,7 +92,7 @@
         </li>
     </ul>
     <div class="section"></div>
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <div class="slider">
                 <ul class="slides">
@@ -113,7 +117,7 @@
 
                         </div>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -121,46 +125,52 @@
             <div class="card col s12">
                 <h3 class="center-align green-text">What We Do</h3>
                 <p class="flow-text">
-                    Set for Summer aims to connect low-income & underprivileged youth to resources that they may lack during the 
-                    Summer break from school. While most kids look forward to the break from class and homework, many low-income parents
-                    have tough obstacles to face; ranging from costs of adequate daycare to simply providing food three times a day.
+                    Set for Summer aims to connect low-income & underprivileged youth to resources that they may lack during the Summer break
+                    from school. While most kids look forward to the break from class and homework, many low-income parents
+                    have tough obstacles to face; ranging from costs of adequate daycare to simply providing food three times
+                    a day.
                 </p>
                 <p class="flow-text">
-                    We bring the specific resources together in one place so that families, teachers, and organizations can find the help 
-                    they need to care for their children and ensure all our children have a great Summer.
+                    We bring the specific resources together in one place so that families, teachers, and organizations can find the help they
+                    need to care for their children and ensure all our children have a great Summer.
                 </p>
             </div>
         </div>
         <div class="row" id="food">
-            <div class="card col s12" >
+            <div class="card col s12">
                 <h3 class="center-align green-text">Food Resources</h3>
                 <p class="flow-text">
-                    Kids who rely on school meals can struggle with hunger during the Summer. 
-                    472,000 Washington kids count on reduced-free and free school meals during the school year,
-                    only 14 percent get food from summer programs.
+                    Kids who rely on school meals can struggle with hunger during the Summer. 472,000 Washington kids count on reduced-free and
+                    free school meals during the school year, only 14 percent get food from summer programs.
                 </p>
-                <div class="card-action right">
-                    <a href="#" class="center-align hoverable">find food resources</a>
+                <div class="card-action right hoverable">
+                    <a href="#" class="center-align ">find food resources</a>
                 </div>
             </div>
         </div>
-        <div class="row" >
-            <div class="card col s12" >
+        <div class="row">
+            <div class="card col s12">
                 <a href="" name='activities'></a>
                 <h3 class="center-align green-text">Activity Resources</h3>
                 <p class="flow-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet metus sapien. Maecenas sollicitudin, justo id iaculis viverra, risus est pellentesque urna, sed ultrices nibh lacus et velit. Aliquam ut sapien non diam ultrices malesuada. Donec vestibulum volutpat enim eu posuere. Suspendisse a felis arcu. Vestibulum pellentesque justo a nibh feugiat, ut bibendum velit rhoncus.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet metus sapien. Maecenas sollicitudin, justo id iaculis
+                    viverra, risus est pellentesque urna, sed ultrices nibh lacus et velit. Aliquam ut sapien non diam ultrices
+                    malesuada. Donec vestibulum volutpat enim eu posuere. Suspendisse a felis arcu. Vestibulum pellentesque
+                    justo a nibh feugiat, ut bibendum velit rhoncus.
                 </p>
                 <div class="card-action right hoverable">
                     <a href="#" class="center-align">find activities</a>
                 </div>
             </div>
         </div>
-        <div class="row"  id="learning">
+        <div class="row" id="learning">
             <div class="card col s12">
                 <h3 class="center-align green-text">Learning Opportunities</h3>
                 <p class="flow-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet metus sapien. Maecenas sollicitudin, justo id iaculis viverra, risus est pellentesque urna, sed ultrices nibh lacus et velit. Aliquam ut sapien non diam ultrices malesuada. Donec vestibulum volutpat enim eu posuere. Suspendisse a felis arcu. Vestibulum pellentesque justo a nibh feugiat, ut bibendum velit rhoncus.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet metus sapien. Maecenas sollicitudin, justo id iaculis
+                    viverra, risus est pellentesque urna, sed ultrices nibh lacus et velit. Aliquam ut sapien non diam ultrices
+                    malesuada. Donec vestibulum volutpat enim eu posuere. Suspendisse a felis arcu. Vestibulum pellentesque
+                    justo a nibh feugiat, ut bibendum velit rhoncus.
                 </p>
                 <div class="card-action right hoverable">
                     <a href="#" class="center-align">find learning opportunities</a>
@@ -168,8 +178,46 @@
             </div>
         </div>
     </div>
-    <a href="#top" id="top-btn" class="btn-floating green btn hide-on-med-and-up"><i class="material-icons">keyboard_arrow_up</i></a>
-    <a href="#top" id="top-btn" class="btn-floating green btn-large hide-on-small-only"><i class="material-icons">keyboard_arrow_up</i></a>
+    <a href="#top" id="top-btn" class="btn-floating green btn hide-on-med-and-up">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </a>
+    <a href="#top" id="top-btn" class="btn-floating green btn-large hide-on-small-only">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </a>
+    <footer class="page-footer blue accent-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                        </li>
+                        <!-- <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <!-- <div class="container">
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div> -->
+        </div>
+    </footer>
+
 </body>
 
 </html>
