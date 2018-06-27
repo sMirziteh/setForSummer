@@ -19,11 +19,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script>
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
-        $('.slider').slider();
-        
-        $('.collapsible-header').click(function(){
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.slider').slider();
+            $('.modal').modal();
             $('.collapsible').collapsible();
             var id = $(this).attr('id')
             $.ajax({
@@ -41,11 +40,16 @@
 </head>
 
 <body>
+    <style>
+        .flow-text {
+            text-align: justify;
+        }
+    </style>
     <a href="" name='top'></a>
     <nav class="nav-extended blue accent-3 ">
         <div class="nav-wrapper">
             <!-- <p class="brand-logo yellow-text">Set For Summer</p> -->
-            <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.7rem">
+            <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.5rem">
                 <b>Set For Summer</b>
             </a>
             <a href="#" class="brand-logo yellow-text hide-on-small-only">
@@ -56,13 +60,13 @@
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down yellow-text">
                 <li>
-                    <a href="sass.html">FAQs</a>
+                    <a href="/faqs">FAQs</a>
                 </li>
                 <li>
-                    <a href="badges.html">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="collapsible.html">Log In / Sign Up</a>
+                    <a href="#signup" class="modal-trigger">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -78,7 +82,7 @@
                     <a href="/activities">Activities</a>
                 </li>
                 <li class="tab">
-                    <a href="#learning">Learning</a>
+                    <a href="/learning">Learning</a>
                 </li>
                 <!-- <li class="tab">
                         <a href="#test4">Test 4</a>
@@ -89,24 +93,41 @@
     <div class="section" id="top"></div>
     <ul class="sidenav" id="mobilenav">
         <li>
-            <a href="sass.html">FAQs</a>
+            <a href="/faqs">FAQs</a>
         </li>
         <li>
-            <a href="badges.html">Contact</a>
+            <a href="/contact">Contact</a>
         </li>
         <li>
-            <a href="collapsible.html">Log In / Sign Up</a>
+            <a href="#signup" class="modal-trigger">Sign Up</a>
         </li>
     </ul>
 
-
+    <div id="signup" class="modal">
+            <div class="modal-content">
+                <h6>Sign up for our newsletter!</h6>
+                <p>We'll send you links to resources, events, and updates</p>
+            </div>
+            <div class="row">
+                <form action="#" method="post" id="emailSignup">
+                    <div class="col s10 offset-s1 input-field">
+                        <input type="text" name="email" id="email">
+                        <label for="email">Input your email</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
+                <a href="#!"  class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
 
     <div class="container">
         <div class="row">
             <div class="card col s12">
                 <h3 class="center-align green-text">Food Resources</h3>
                 <p class="flow-text">
-                    Kids who rely on school meals can struggle with hunger during the Summer. 472,000 Washington kids count on reduced-free and
+                    Kids who rely on school meals can struggle with hunger during the Summer. 472,000 Washington kids count on reduced-fee and
                     free school meals during the school year, only 14 percent get food from summer programs.
                 </p>
             </div>
@@ -117,7 +138,11 @@
                     <li>
                         <div class="collapsible-header" id='9'>
                             <ul>
-                                <li><a href="#"><h6 class="green-text">Ballard - Seattle Public Library</h6></a></li>
+                                <li>
+                                    <a href="#">
+                                        <h6 class="green-text">Ballard - Seattle Public Library</h6>
+                                    </a>
+                                </li>
                                 <li>5614 22nd Ave NW, Seattle, WA 98107</li>
                                 <li>Call 206-684-4089 to sign up</li>
                             </ul>
@@ -146,6 +171,33 @@
         </div>
     </div>
 
+    <footer class="page-footer blue accent-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">SetForSummer.org</h5>
+                    <p class="grey-text text-lighten-4">This site was built using Django at CodingDojo Seattle</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="/contact">Contact</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="/faqs">FAQs</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="/about">About this project</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+
+        </div>
+    </footer>
 </body>
 
 </html>
