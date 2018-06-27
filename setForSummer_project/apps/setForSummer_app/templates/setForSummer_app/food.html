@@ -8,16 +8,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"/>
+    
+    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/map.css'%}" media="screen,projection"/>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
     <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav();
-            $('.slider').slider();
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.slider').slider();
+        
+        $('.collapsible-header').click(function(){
             $('.collapsible').collapsible();
-        });
+            var id = $(this).attr('id')
+            $.ajax({
+                url:'map/'+id,
+                success:function(serverResponse){
+                    $('#map').html(serverResponse)
+                }
+            })
+        })
+    });
     </script>
+
+
     <title>SetForSummer.org | Food</title>
 </head>
 
@@ -96,26 +115,27 @@
             <div class="col s12 m9 l8">
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='9'>
                             <ul>
                                 <li><a href="#"><h6 class="green-text">Ballard - Seattle Public Library</h6></a></li>
                                 <li>5614 22nd Ave NW, Seattle, WA 98107</li>
                                 <li>Call 206-684-4089 to sign up</li>
                             </ul>
                         </div>
-                        <div class="collapsible-body" id="8">
-                            map
+                        <div class="collapsible-body">
+                            <!-- map -->
+                            <div id="map"></div>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='9'>
                         </div>
                         <div class="collapsible-body">
                             <span>Lorem ipsum dolor sit amet.</span>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='10'>
                         </div>
                         <div class="collapsible-body">
                             <span>Lorem ipsum dolor sit amet.</span>
@@ -125,7 +145,7 @@
             </div>
         </div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGQK9ytpuYkktbj0c83lAjis8i6Kg0lls&libraries=places&callback=initMap" async defer></script>
+
 </body>
 
 </html>
