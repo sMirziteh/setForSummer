@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from .models import *
 
 
 def setHome(request):
@@ -6,9 +7,17 @@ def setHome(request):
     return render(request, 'setForSummer_app/index.html')
 
 def food(request):
-    return render(request, 'setForSummer_app/food.html')
+    map = Location.objects.get(id=8)
+    coords = {
+        'lat': map.lat,
+        'lng': map.lon
+    }
+    print(coords)
+
+    return render(request, 'setForSummer_app/food.html', coords)
 
 def activities(request):
     return render(request, 'setForSummer_app/activites.html')
 
-# Create your views here.
+def map(request):
+    return HttpResponse()
