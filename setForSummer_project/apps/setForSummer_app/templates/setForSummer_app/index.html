@@ -18,7 +18,8 @@
         $(document).ready(function () {
             $('.slider').slider();
             $('.sidenav').sidenav();
-            $('.sidenav').sidenav('draggable', true);
+            $('.modal').modal();
+            // $('.sidenav').sidenav('draggable', true);
             // $('.carousel').carousel();
         });
     </script>
@@ -58,7 +59,7 @@
                     <a href="/contacts">Contact</a>
                 </li>
                 <li>
-                    <a href="/login">Log In / Sign Up</a>
+                    <a href="#signup" class="modal-trigger">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -91,9 +92,27 @@
             <a href="/contact">Contact</a>
         </li>
         <li>
-            <a href="/login">Log In / Sign Up</a>
+            <a href="#signup" class="modal-trigger">Sign Up</a>
         </li>
     </ul>
+    <div id="signup" class="modal">
+            <div class="modal-content">
+                <h6>Sign up for our newsletter!</h6>
+                <p>We'll send you links to resources, events, and updates</p>
+            </div>
+            <div class="row">
+                <form action="#" method="post" id="emailSignup">
+                    <div class="col s10 offset-s1 input-field">
+                        <input type="text" name="email" id="email">
+                        <label for="email">Input your email</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
+                <a href="#!"  class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
     <div class="section"></div>
     <div class="container">
         <div class="row">
@@ -123,7 +142,6 @@
                     <li>
                         <img src="{%static 'setForSummer_app/images/kidreading.jpg'%}">
                         <div class="caption center-align">
-                                <div class="section"></div>
                                 <div class="section"></div>
                                 <h3 class="blue-text text-darken-2">Learning Opportunities</h3>
                                 <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->

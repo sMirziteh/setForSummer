@@ -18,6 +18,7 @@
         $(document).ready(function () {
             $('.sidenav').sidenav();
             $('.slider').slider();
+            $('.modal').modal();
             $('.collapsible').collapsible();
         });
     </script>
@@ -51,7 +52,7 @@
                     <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="/login">Log In / Sign Up</a>
+                    <a href="#signup" class="modal-trigger">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -84,11 +85,28 @@
             <a href="/contact">Contact</a>
         </li>
         <li>
-            <a href="/login">Log In / Sign Up</a>
+            <a href="#signup" class="modal-trigger">Sign Up</a>
         </li>
     </ul>
 
-
+    <div id="signup" class="modal">
+            <div class="modal-content">
+                <h6>Sign up for our newsletter!</h6>
+                <p>We'll send you links to resources, events, and updates</p>
+            </div>
+            <div class="row">
+                <form action="#" method="post" id="emailSignup">
+                    <div class="col s10 offset-s1 input-field">
+                        <input type="text" name="email" id="email">
+                        <label for="email">Input your email</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
+                <a href="#!"  class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
     <footer class="page-footer blue accent-3">
         <div class="container">
             <div class="row">
