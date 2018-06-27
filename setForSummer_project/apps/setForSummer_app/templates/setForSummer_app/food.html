@@ -24,15 +24,7 @@
             $('.slider').slider();
             $('.modal').modal();
             $('.collapsible').collapsible();
-            var id = $(this).attr('id')
-            $.ajax({
-                url:'map/'+id,
-                success:function(serverResponse){
-                    $('#map').html(serverResponse)
-                }
-            })
-        })
-    });
+            });
     </script>
 
 
