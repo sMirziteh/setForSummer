@@ -12,9 +12,8 @@
     <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/map.css'%}" media="screen,projection"/>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwn80Tpgl0gfMixJtCmDvzvfkCUMobKk&libraries=places&callback=initMap"async defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
@@ -22,31 +21,14 @@
     $(document).ready(function(){
         $('.sidenav').sidenav();
         $('.slider').slider();
-        $('.collapsible').collapsible();
-        function initMap(){
-            var latitude = 47.64071;
-            var longitude = -122.365636;
-            var coords={lat:latitude,lng:longitude}
-
-            var mapCenter = new google.maps.LatLng(coords.lat,coords.lng);
-
-            var options = {
-                zoom:18,
-                center:coords
-            }
-            
-            var map = new google.maps.Map(document.getElementById('map'), options);
-        }
-        initMap()
-
-        $('/collapsible').click(function(){
-            console.log(this.className)
+        
+        $('.collapsible-header').click(function(){
+            $('.collapsible').collapsible();
+            var id = $(this).attr('id')
             $.ajax({
-                method: 'POST',
-                url:'map/'+$('#id').val(),
-                data: {id: $('#id').val(),},
-                success: function(serverResponse){
-                    $('#8').html(serverResponse)
+                url:'map/'+id,
+                success:function(serverResponse){
+                    $('#map').html(serverResponse)
                 }
             })
         })
@@ -132,7 +114,7 @@
             <div class="col s12 m9 l8">
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='9'>
                             <ul>
                                 <li><a href="#"><h6 class="green-text">Ballard - Seattle Public Library</h6></a></li>
                                 <li>5614 22nd Ave NW, Seattle, WA 98107</li>
@@ -140,19 +122,19 @@
                             </ul>
                         </div>
                         <div class="collapsible-body">
-                            <input type="hidden" name="id" value="8">
+                            <!-- map -->
                             <div id="map"></div>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='9'>
                         </div>
                         <div class="collapsible-body">
                             <span>Lorem ipsum dolor sit amet.</span>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='10'>
                         </div>
                         <div class="collapsible-body">
                             <span>Lorem ipsum dolor sit amet.</span>
