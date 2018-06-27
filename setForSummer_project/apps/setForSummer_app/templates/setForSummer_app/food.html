@@ -14,21 +14,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwn80Tpgl0gfMixJtCmDvzvfkCUMobKk&libraries=places&callback=initMap" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script>
     $(document).ready(function(){
         $('.sidenav').sidenav();
         $('.slider').slider();
-        
-        $('.collapsible-header').click(function(){
-            $('.collapsible').collapsible();
-            var id = $(this).attr('id')
+        $('.coords').click(function(){
+            var place_id = $(this).attr('id')
             $.ajax({
-                url:'map/'+id,
+                url:'map/'+place_id,
                 success:function(serverResponse){
-                    $('#map').html(serverResponse)
+                    $('#my_map').html(serverResponse)
                 }
             })
         })
@@ -111,40 +109,30 @@
             </div>
         </div>
         <div class="row">
+            <div class="col s12 m12 l8" id="my_map"></div>
+        </div>
+        <div class="row">
             <div class="col s12 m9 l8">
-                <ul class="collapsible">
+                {% for place in places %}
+                <ul>
                     <li>
-                        <div class="collapsible-header" id='9'>
+                        <div>
                             <ul>
-                                <li><a href="#"><h6 class="green-text">Ballard - Seattle Public Library</h6></a></li>
-                                <li>5614 22nd Ave NW, Seattle, WA 98107</li>
-                                <li>Call 206-684-4089 to sign up</li>
+                                <li><a href="#my_map" class="green-text coords" id='{{ place.id }}'>{{ place.name }}</a><h6 ></h6></a></li>
+                                <li>{{ place.address }}</li>
+                                <li>{{ place.contact }}</li>
                             </ul>
                         </div>
-                        <div class="collapsible-body">
+                        <div>
                             <!-- map -->
-                            <div id="map"></div>
+                            <div id="{{ place.id }}"></div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header" id='9'>
-                        </div>
-                        <div class="collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header" id='10'>
-                        </div>
-                        <div class="collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
-                        </div>
-                    </li>
+                    </li>   
                 </ul>
+                {% endfor %}
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

@@ -1,20 +1,24 @@
-<div id="map"></div>
+<div style="width:90%; height:400px; margin:auto;"id="{{map_id}}"></div>
 <script>
     function initMap(){
-        var latitude = {{lat}};
-        var longitude = {{lon}};
-        var coords={lat:latitude,lng:longitude};
-
-        var mapCenter = new google.maps.LatLng(coords.lat,coords.lng);
+        var longitude = {{ lon }};
+        var latitude = {{ lat }};
+        console.log(longitude)
+        console.log(latitude)
+        
+        var coords = {
+            lat:latitude,
+            lng:longitude
+        };
 
         var options = {
             zoom:18,
             center:coords
         };
         
-        var map = new google.maps.Map(document.getElementById('map'), options);
+        new google.maps.Map(document.getElementById({{map_id}}), options);
+        console.log(options)
     }
-    initMap();
+    initMap()
+    
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwn80Tpgl0gfMixJtCmDvzvfkCUMobKk&libraries=places&callback=initMap"
-async defer></script>

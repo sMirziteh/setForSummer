@@ -5,8 +5,10 @@ def setHome(request):
     return render(request, 'setForSummer_app/index.html')
 
 def food(request):
-
-    return render(request, 'setForSummer_app/food.html')
+    places = {
+        'places': Location.objects.all()
+    }
+    return render(request, 'setForSummer_app/food.html', places)
 
 def activities(request):
     return render(request, 'setForSummer_app/activites.html')
@@ -14,6 +16,7 @@ def activities(request):
 def map_id(request,id):
     map = Location.objects.get(id=id)
     return render(request,'setForSummer_app/map.html',{
+        'map_id': map.id,
         'lat':map.lat,
         'lon':map.lon,
     })
