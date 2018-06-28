@@ -14,7 +14,15 @@
             center:coords
         };
         
-        new google.maps.Map(document.getElementById({{map_id}}), options);
+        map = new google.maps.Map(document.getElementById({{map_id}}), options);
+
+        function addMarker(coords){
+            var marker  = new google.maps.Marker({
+                position: coords,
+                map:map,
+            });
+        }
+        addMarker(coords);
     }
     initMap()
 </script>
