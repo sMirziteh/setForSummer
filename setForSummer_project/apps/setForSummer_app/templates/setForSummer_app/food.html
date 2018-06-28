@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"/>
-    
-    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/map.css'%}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"
+    />
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    
+    <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/map.css'%}" media="screen,projection" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
@@ -24,7 +26,7 @@
             $('.slider').slider();
             $('.modal').modal();
             $('.collapsible').collapsible();
-            });
+        });
     </script>
 
 
@@ -96,23 +98,74 @@
     </ul>
 
     <div id="signup" class="modal">
-            <div class="modal-content">
-                <h6>Sign up for our newsletter!</h6>
-                <p>We'll send you links to resources, events, and updates</p>
-            </div>
-            <div class="row">
-                <form action="#" method="post" id="emailSignup">
-                    <div class="col s10 offset-s1 input-field">
+        <div class="modal-content">
+            <h5>Sign Up!</h5>
+            <p>We want to know more about the visitors who use this site.</p>
+            <p>We'll use this data to help provide better resources and help more kids!</p>
+        </div>
+        <div class="row">
+            <form action="#" method="post" id="emailSignup" class="validation">
+                <div class="row">
+                    <div class="col s8 offset-s1 input-field">
                         <input type="text" name="email" id="email">
                         <label for="email">Input your email</label>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
-                <a href="#!"  class="modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
+                </div>
+                <div class="row">
+                    <div class="col s8 offset-s1 input-field">
+                        <input type="text" name="name" class="validate" id="name">
+                        <label for="name">Your name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4 offset-s1 input-field">
+                        <input type="tel" name="phone" class="validate" id="phone">
+                        <label for="phone">Phone number</label>
+                    </div>
+                    <div class="col s4 offset-s1 input-field">
+                        <input type="number" name="zip" class="validate" id="zip">
+                        <label for="zip">Zipcode</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 offset-s1 input-field">
+                        <p>Sign up for our newsletter and we'll send you links</p>
+                            <p> to resources, events, and updates by email.</p>
+                        <p>
+                            <label for="news">
+                                <input type="checkbox" name="news" id="news">
+                                <span>Newsletter opt-in</span>
+                            </label>
+                        </p>
+                        <br>
+                        <p>What resources are you interested in? (Choose all that apply)</p>
+                        <p>
+                            <label for="food">
+                                <input type="checkbox" name="food" id="food">
+                                <span>Food Resources</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label for="activities">
+                                <input type="checkbox" name="activities" id="activities">
+                                <span>Activities</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label for="learning">
+                                <input type="checkbox" name="learning" id="learning">
+                                <span>learning</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </form>
         </div>
+        <div class="modal-footer">
+            <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
