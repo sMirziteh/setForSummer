@@ -3,8 +3,6 @@
     function initMap(){
         var longitude = {{ lon }};
         var latitude = {{ lat }};
-        console.log(longitude)
-        console.log(latitude)
         
         var coords = {
             lat:latitude,
@@ -17,8 +15,6 @@
         };
         
         new google.maps.Map(document.getElementById({{map_id}}), options);
-        console.log(options)
     }
     initMap()
-    
 </script>

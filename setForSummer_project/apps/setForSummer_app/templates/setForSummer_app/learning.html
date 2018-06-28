@@ -22,7 +22,6 @@
             $('.collapsible-header').click(function(){
             $('.collapsible').collapsible();
             var id = $(this).attr('id-out')
-            console.log(id)
 
             $.ajax({
                 url:'map/'+id,
@@ -247,6 +246,7 @@
 
         </div>
     </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwn80Tpgl0gfMixJtCmDvzvfkCUMobKk&libraries=places&callback=initMap" async defer></script>
 </body>
 
 </html>
