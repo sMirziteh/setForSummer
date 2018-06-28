@@ -1,0 +1,24 @@
+<div style="width:90%; height:400px; margin:auto;"id="{{map_id}}"></div>
+<script>
+    function initMap(){
+        var longitude = {{ lon }};
+        var latitude = {{ lat }};
+        console.log(longitude)
+        console.log(latitude)
+        
+        var coords = {
+            lat:latitude,
+            lng:longitude
+        };
+
+        var options = {
+            zoom:18,
+            center:coords
+        };
+        
+        new google.maps.Map(document.getElementById({{map_id}}), options);
+        console.log(options)
+    }
+    initMap()
+    
+</script>

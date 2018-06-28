@@ -11,15 +11,23 @@
     <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwn80Tpgl0gfMixJtCmDvzvfkCUMobKk&libraries=places&callback=initMap" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-
 
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();
             $('.slider').slider();
             $('.modal').modal();
-            $('.collapsible').collapsible();
+            $('.coords').click(function(){
+            var place_id = $(this).attr('id')
+                $.ajax({
+                    url:'map/activities/'+place_id,
+                    success:function(serverResponse){
+                        $('#my_map').html(serverResponse)
+                    }
+                })
+            })
         });
     </script>
     <title>SetForSummer.org | Activites</title>
@@ -120,39 +128,23 @@
             </div>
         </div>
         <div class="row">
+            <div class="col s12 m12 l8" id="my_map"></div>
+        </div>
+        <div class="row">
             <div class="col s12 m9 l8">
-                <ul class="collapsible">
+                {% for place in places %}
+                <ul>
                     <li>
-                        <div class="collapsible-header">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h6 class="green-text">La Maternelle De Seattle</h6>
-                                    </a>
-                                </li>
-                                <li>5957 44th Ave S, Seattle, WA 98118</li>
-                                <li>(206) 852-5764</li>
-                            </ul>
-                        </div>
-                        <div class="collapsible-body ">
-                            map
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">
-                        </div>
-                        <div class="collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">
-                        </div>
-                        <div class="collapsible-body">
-                            <span>Lorem ipsum dolor sit amet.</span>
-                        </div>
-                    </li>
+                        <ul>
+                            <li><a href="#my_map" class="green-text coords" id='{{ place.id }}'>{{ place.name }}</a></li>
+                            <li>{{ place.address }}</li>
+                            <li>{{ place.contact }}</li>
+                            <br>
+                            <li class="">{{place.description}}</li>
+                        </ul>
+                    </li>   
                 </ul>
+                {% endfor %}
             </div>
         </div>
     </div>

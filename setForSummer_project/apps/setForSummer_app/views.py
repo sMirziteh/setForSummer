@@ -5,16 +5,22 @@ def setHome(request):
     return render(request, 'setForSummer_app/index.html')
 
 def food(request):
-    places = {
-        'places': Location.objects.all()
-    }
-    return render(request, 'setForSummer_app/food.html', places)
+    places = Location.objects.filter(category = 'food')
+    lastplace = Location.objects.filter(category = 'food').last()
+    last= str(lastplace.id)
+    return render(request, 'setForSummer_app/food.html', {'lastID':last,'places':places})
 
 def activities(request):
-    return render(request, 'setForSummer_app/activities.html')
+    places = {
+        'places': Location.objects.filter(category = 'activity')
+    }
+    return render(request, 'setForSummer_app/activities.html', places)
 
 def learning(request):
-    return render(request, 'setForSummer_app/learning.html')
+    places = Location.objects.filter(category = 'education')
+    lastplace = Location.objects.filter(category = 'education').last()
+    last= str(lastplace.id)
+    return render(request, 'setForSummer_app/learning.html', {'lastID':last,'places':places})
 
 def faqs(request):
     return render(request, 'setForSummer_app/faqs.html')
@@ -22,10 +28,18 @@ def faqs(request):
 def contact(request):
     return render(request, 'setForSummer_app/contact.html')
 
+def activities_map(request,id):
+    map = Location.objects.get(id=id)
+    return render(request,'setForSummer_app/map2.html',{
+        'map_id': map.id,
+        'lat':map.lat,
+        'lon':map.lon,
+    })
+
 def map_id(request,id):
     map = Location.objects.get(id=id)
     return render(request,'setForSummer_app/map.html',{
-        'map_id': map.id,
+        'id': map.id,
         'lat':map.lat,
         'lon':map.lon,
     })

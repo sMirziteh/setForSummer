@@ -14,7 +14,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwn80Tpgl0gfMixJtCmDvzvfkCUMobKk&libraries=places&callback=initMap" async defer></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
     <script>
@@ -22,12 +23,15 @@
         $('.sidenav').sidenav();
         $('.slider').slider();
         $('.modal').modal();
-        $('.coords').click(function(){
-            var place_id = $(this).attr('id')
+        $('.collapsible-header').click(function(){
+            $('.collapsible').collapsible();
+            var id = $(this).attr('id-out')
+            console.log(id)
+
             $.ajax({
-                url:'map/'+place_id,
+                url:'map/'+id,
                 success:function(serverResponse){
-                    $('#my_map').html(serverResponse)
+                    $('#{{lastID}}').html(serverResponse)
                 }
             })
         })
@@ -39,16 +43,11 @@
 </head>
 
 <body>
-    <style>
-        .flow-text {
-            text-align: justify;
-        }
-    </style>
     <a href="" name='top'></a>
     <nav class="nav-extended blue accent-3 ">
         <div class="nav-wrapper">
             <!-- <p class="brand-logo yellow-text">Set For Summer</p> -->
-            <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.5rem">
+            <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.7rem">
                 <b>Set For Summer</b>
             </a>
             <a href="#" class="brand-logo yellow-text hide-on-small-only">
@@ -92,92 +91,70 @@
     <div class="section" id="top"></div>
     <ul class="sidenav" id="mobilenav">
         <li>
-            <a href="/faqs">FAQs</a>
+            <a href="sass.html">FAQs</a>
         </li>
         <li>
-            <a href="/contact">Contact</a>
+            <a href="badges.html">Contact</a>
         </li>
         <li>
-            <a href="#signup" class="modal-trigger">Sign Up</a>
+            <a href="collapsible.html">Log In / Sign Up</a>
         </li>
     </ul>
 
     <div id="signup" class="modal">
-            <div class="modal-content">
-                <h6>Sign up for our newsletter!</h6>
-                <p>We'll send you links to resources, events, and updates</p>
-            </div>
-            <div class="row">
-                <form action="#" method="post" id="emailSignup">
-                    <div class="col s10 offset-s1 input-field">
-                        <input type="text" name="email" id="email">
-                        <label for="email">Input your email</label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
-                <a href="#!"  class="modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
+        <div class="modal-content">
+            <h6>Sign up for our newsletter!</h6>
+            <p>We'll send you links to resources, events, and updates</p>
         </div>
-
+        <div class="row">
+            <form action="#" method="post" id="emailSignup">
+                <div class="col s10 offset-s1 input-field">
+                    <input type="text" name="email" id="email">
+                    <label for="email">Input your email</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" onclick="document.getElementById('emailSignup').submit()" class="modal-close waves-effect waves-green btn-flat">Sign Up</a>
+            <a href="#!"  class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="card col s12">
                 <h3 class="center-align green-text">Food Resources</h3>
                 <p class="flow-text">
-                    Kids who rely on school meals can struggle with hunger during the Summer. 472,000 Washington kids count on reduced-fee and
+                    Kids who rely on school meals can struggle with hunger during the Summer. 472,000 Washington kids count on reduced-free and
                     free school meals during the school year, only 14 percent get food from summer programs.
                 </p>
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m12 l8" id="my_map"></div>
-        </div>
-        <div class="row">
+
             <div class="col s12 m9 l8">
-                {% for place in places %}
-                <ul>
+                <ul class="collapsible">
+                    {%for place in places%}
                     <li>
-                        <ul>
-                            <li><a href="#my_map" class="green-text coords" id='{{ place.id }}'>{{ place.name }}</a><h6 ></h6></a></li>
-                            <li>{{ place.address }}</li>
-                            <li>{{ place.contact }}</li>
-                        </ul>
-                    </li>   
+                        <div class="collapsible-header" id-out="{{place.id}}">
+                            <ul>
+                                <li><h6 class="green-text">{{place.name}}</h6></li>
+                                <li>{{place.address}}</li>
+                                <li>{{place.contact}}</li>
+                                <br>
+                                <li class="">{{place.description}}</li>
+                            </ul>
+                        </div>
+                        <div class="collapsible-body">
+                            <!-- map -->
+                            <div style="width:90%; height:400px; margin:auto;" id="{{place.id}}"></div>
+                        </div>
+                    </li>
+                    {%endfor%}
                 </ul>
-                {% endfor %}
             </div>
         </div>
     </div>
 
-    <footer class="page-footer blue accent-3">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">SetForSummer.org</h5>
-                    <p class="grey-text text-lighten-4">This site was built using Django at CodingDojo Seattle</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="/contact">Contact</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="/faqs">FAQs</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="/about">About this project</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-
-        </div>
-    </footer>
 </body>
 
 </html>

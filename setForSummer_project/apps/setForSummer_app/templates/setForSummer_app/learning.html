@@ -19,7 +19,18 @@
             $('.sidenav').sidenav();
             $('.slider').slider();
             $('.modal').modal();
+            $('.collapsible-header').click(function(){
             $('.collapsible').collapsible();
+            var id = $(this).attr('id-out')
+            console.log(id)
+
+            $.ajax({
+                url:'map/'+id,
+                success:function(serverResponse){
+                    $('#{{lastID}}').html(serverResponse)
+                }
+            })
+        })
         });
     </script>
     <title>SetForSummer.org | Learning</title>
@@ -52,7 +63,7 @@
                     <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="#signup" class="modal-trigger">Sign Up</a>
+                    <a href="/signup" class="modal-trigger">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -122,36 +133,38 @@
         <div class="row">
             <div class="col s12 m9 l8">
                 <ul class="collapsible">
+                    {%for place in places%}
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id-out="{{place.id}}">
                             <ul>
-                                <li>
-                                    <a href="#">
-                                        <h6 class="green-text">Computing Kids</h6>
-                                    </a>
-                                </li>
-                                <li>2300 S Massachusetts St, Seattle, WA 98144</li>
-                                <li>206-518-6000</li>
+                                <li><h6 class="green-text">{{place.name}}</h6></li>
+                                <li>{{place.address}}</li>
+                                <li>{{place.contact}}</li>
+                                <br>
+                                <li class="">{{place.description}}</li>
                             </ul>
                         </div>
-                        <div class="collapsible-body ">
-                            map
+                        <div class="collapsible-body">
+                            <div style="width:90%; height:400px; margin:auto;" id="{{place.id}}"></div>
+                            <!-- map -->
                         </div>
                     </li>
-                    <li>
-                        <div class="collapsible-header">
+                    {%endfor%}
+                    <!-- <li>
+                        <div class="collapsible-header" id='10'>
+                            
                         </div>
                         <div class="collapsible-body">
                             <span>Lorem ipsum dolor sit amet.</span>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" id='10'>
                         </div>
                         <div class="collapsible-body">
                             <span>Lorem ipsum dolor sit amet.</span>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
