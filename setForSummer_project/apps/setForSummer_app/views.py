@@ -1,9 +1,25 @@
 from django.shortcuts import render, redirect, HttpResponse
+import random
 from .models import Users, Location
-import json
+
 
 def setHome(request):
-    return render(request, 'setForSummer_app/index.html')
+    new_list = []
+    distinct = Users.objects.values('zipcode').distinct()
+
+    for data in distinct:
+        obj = {
+            'zip': data['zipcode'],
+            'count': Users.objects.filter( zipcode = data['zipcode']).count()
+        }
+        new_list.append(obj)
+    data = {
+        'data': Users.objects.values('zipcode').distinct(),
+        'rand': random.randrange(1,10),
+        'list': new_list
+    }
+    
+    return render(request, 'setForSummer_app/index.html', data)
 
 def food(request):
     places = Location.objects.filter(category = 'food')
