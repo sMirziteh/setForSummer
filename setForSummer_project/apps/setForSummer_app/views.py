@@ -5,17 +5,16 @@ from .models import Users, Location
 
 def setHome(request):
     new_list = []
-    distinct = User.objects.values('zipcode').distinct()
+    distinct = Users.objects.values('zipcode').distinct()
 
     for data in distinct:
         obj = {
             'zip': data['zipcode'],
-            'count': User.objects.filter( zipcode = data['zipcode']).count()
+            'count': Users.objects.filter( zipcode = data['zipcode']).count()
         }
         new_list.append(obj)
-    print(new_list)
     data = {
-        'data': User.objects.values('zipcode').distinct(),
+        'data': Users.objects.values('zipcode').distinct(),
         'rand': random.randrange(1,10),
         'list': new_list
     }
