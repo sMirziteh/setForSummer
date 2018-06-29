@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import *
+from .models import Users, Location
+import json
 
 def setHome(request):
     return render(request, 'setForSummer_app/index.html')
@@ -43,3 +44,12 @@ def map_id(request,id):
         'lat':map.lat,
         'lon':map.lon,
     })
+
+def signup(request):
+    result = Users.objects.signupform(request.POST)
+    if type(result) is dict:
+        result = 'worked!'
+        print(result)
+    return HttpResponse()
+    
+    
