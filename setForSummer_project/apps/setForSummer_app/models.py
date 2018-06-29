@@ -16,8 +16,6 @@ class User(models.Model):
         return f"<<Users: {self.user_name} {self.email} {self.phone} {self.zipcode} {self.newsletter} {self.food} {self.activities} {self.learning} {self.relationship}"
 
 
-
-
 class Location(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)

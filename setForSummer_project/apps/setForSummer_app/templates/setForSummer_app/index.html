@@ -10,15 +10,117 @@
 
     <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"
     />
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-
 
     <script>
         $(document).ready(function () {
             $('.slider').slider();
             $('.sidenav').sidenav();
             $('.modal').modal();
+            $('#data_toggle').click(function() {
+                $('#data').toggle('slow');
+            })
+            var chart = AmCharts.makeChart( "chartdiv", {
+                "type": "pie",
+                "theme": "light",
+                "titles": [ {
+                "text": "WA Income Census",
+                "size": 10
+                } ],
+                "dataProvider": [ {
+                "income": "Under $50K",
+                "population": 456308
+                }, {
+                "income": "$50K-$100K",
+                "population": 444303
+                }, {
+                "income": "$100K-$200K",
+                "population": 402668
+                }, {
+                "income": "Over $200K",
+                "population": 161662
+                }],
+                "valueField": "population",
+                "titleField": "income",
+                "startEffect": "elastic",
+                "startDuration": 2,
+                "labelRadius": 0,
+                "innerRadius": "60%",
+                "depth3D": 10,
+                "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+                "angle": 14,
+                "export": {
+                "enabled": true
+                }
+            });
+            var chart = AmCharts.makeChart( "chartdiv2", {
+                "type": "pie",
+                "theme": "light",
+                "titles": [ {
+                "text": "State wide poverty scale",
+                "size": 10
+                } ],
+                "dataProvider": [ {
+                "status": "Seattle",
+                "percentage": 115
+                },
+                {
+                "status": "Other",
+                "percentage": 5
+                }],
+                "valueField": "percentage",
+                "titleField": "status",
+                "startEffect": "elastic",
+                "startDuration": 2,
+                "labelRadius": 15,
+                "innerRadius": "60%",
+                "depth3D": 10,
+                "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+                "angle": 14,
+                "export": {
+                "enabled": true
+                }
+            });
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawSeriesChart);
+
+            function drawSeriesChart() {
+                // population in ID tag
+            var data = google.visualization.arrayToDataTable([
+                ['Count', 'x', 'y', 'Zipcode', 'Population'],
+                {% for data in list %}
+                    ['{{ data.count }}', Math.floor(Math.random() * 80)+2, Math.floor(Math.random() * 80)+2, '{{ data.zip }}', {{ data.count }}],
+                {% endfor %}
+            ]);
+            var options = {
+                title: 'Need Based On Zip Code',
+                hAxis: {
+                    baselineColor: 'transparent',
+                    gridlines: {
+                        count: 0
+                    },
+                    textPosition: 'none'
+                    },
+                    vAxis: {
+                    baselineColor: 'transparent',
+                    gridlines: {
+                        count: 1
+                    },
+                    textPosition: 'none'
+                    },
+                    bubble: {textStyle: {fontSize: 11}}
+                };
+
+            var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+            chart.draw(data, options);
+            }
         });
     </script>
     <title>SetForSummer.org | Home</title>
@@ -31,9 +133,21 @@
             top: 90%;
             left: 89%;
         }
-
         .flow-text {
             text-align: justify;
+        }
+        #chartdiv {
+            height: 40vh;
+        }
+        #chartdiv2 {
+            width: 100%;
+            height: 40vh;
+        }
+        /* #data {
+            display: none;
+        } */
+        .bubble_chart {
+            height: 40vh;
         }
     </style>
 
@@ -76,9 +190,6 @@
                 <li class="tab">
                     <a href="/learning">Learning</a>
                 </li>
-                <!-- <li class="tab">
-                        <a href="#test4">Test 4</a>
-                    </li> -->
             </ul>
         </div>
     </nav>
@@ -190,7 +301,6 @@
                             <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
                         </div>
                     </li>
-
                     <li>
                         <img src="{%static 'setForSummer_app/images/kidsrunning.jpg'%}">
                         <div class="caption center-align">
@@ -224,6 +334,38 @@
                     We bring the specific resources together in one place so that families, teachers, and organizations can find the help they
                     need to care for their children and ensure all have a great Summer.
                 </p>
+                <div class="card-action right hoverable">
+                    <a href="#!" id="data_toggle">Show Me The Data!</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="data">
+            <div class="card col s12">
+                <h3>Data:</h3>
+                <div id="chartdiv"></div>
+                <h6 class="center"><b>Seattle is home to a majority of state-wide poverty</b></h6>
+                <div id="chartdiv2"></div>
+                <div class="icon_wrapper">
+                    <p>1 out of 6 kids in the United States face hunger.</p>
+                    <i style="color: orange;" class="material-icons">face</i>
+                    <i class="material-icons">face</i>
+                    <i class="material-icons">face</i>
+                    <i class="material-icons">face</i>
+                    <i class="material-icons">face</i>
+                    <i class="material-icons">face</i>
+                </div>
+                <br>
+                <div class="icon_wrapper">
+                    <p>5 out of 6 kids in Seattle who rely on free or reduced-price school meals aren’t getting free meals in the summer.</p>
+                    <i style="color: orange;" class="material-icons">face</i>
+                    <i style="color: orange;" class="material-icons">face</i>
+                    <i style="color: orange;" class="material-icons">face</i>
+                    <i style="color: orange;" class="material-icons">face</i>
+                    <i style="color: orange;" class="material-icons">face</i>
+                    <i class="material-icons">face</i>
+                </div>
+                <div id="series_chart_div" class="bubble_chart col xs11 s11 m11 l11"></div>
             </div>
         </div>
 
