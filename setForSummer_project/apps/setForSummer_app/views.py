@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import *
 import random
+from .models import Users, Location
+
+
 def setHome(request):
     new_list = []
     distinct = User.objects.values('zipcode').distinct()
@@ -59,3 +61,12 @@ def map_id(request,id):
         'lat':map.lat,
         'lon':map.lon,
     })
+
+def signup(request):
+    result = Users.objects.signupform(request.POST)
+    if type(result) is dict:
+        result = 'worked!'
+        print(result)
+    return HttpResponse()
+    
+    

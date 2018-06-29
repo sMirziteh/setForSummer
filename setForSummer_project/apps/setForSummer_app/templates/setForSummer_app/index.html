@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Finger+Paint" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link type="text/css" rel="stylesheet" href="{% static 'setForSummer_app/CSS/materialize.css'%}" media="screen,projection"
@@ -121,6 +122,24 @@
             var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
             chart.draw(data, options);
             }
+            var frm = $('#emailsignup');
+            frm.submit(function(ev){
+                    console.log('submitted')
+                    ev.preventDefault();
+                    $.ajax({
+                        data: frm.serialize(),
+                        type: frm.attr('POST'),
+                        url: frm.attr('/signup'),
+                        success: function(response){
+                            console.log(response)
+                            $('#response').html(response);
+                        },
+                        error: function(data) {
+                            $('#response').html(response)
+                        }
+                    });
+                    return false;
+                });
         });
     </script>
     <title>SetForSummer.org | Home</title>
@@ -132,6 +151,7 @@
             position: fixed;
             top: 90%;
             left: 89%;
+            /* display: none; */
         }
         .flow-text {
             text-align: justify;
@@ -149,18 +169,31 @@
         .bubble_chart {
             height: 40vh;
         }
+        .slider-text {
+            text-shadow: 2px 2px 2px black;
+        }
+
+        .logo {
+            font-family: 'Finger Paint', cursive;
+            text-shadow: 0 0 10px #2c6707;
+
+            font-size: 1.7rem;
+        }
     </style>
 
     <a href="" name='top'></a>
     <nav class="nav-extended blue accent-3 ">
         <div class="nav-wrapper">
-            <!-- <p class="brand-logo yellow-text">Set For Summer</p> -->
-            <a href="#" class="brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.5rem">
-                <b>Set For Summer</b>
-            </a>
-            <a href="#" class="brand-logo yellow-text hide-on-small-only">
-                <b>Set For Summer</b>
-            </a>
+            <div class="row">
+                <div class="col s5 offset-s1">
+                        <a href="#" class="logo brand-logo yellow-text hide-on-med-and-up" style="font-size: 1.7rem">
+                            <b>SetForSummer<span style="color: #00e600">.</span>Org</b>
+                        </a>
+                        <a href="#" class="logo brand-logo yellow-text hide-on-small-only" style="font-size: 2rem">
+                            <b>SetForSummer<span style="color: #00e600">.</span>Org</b>
+                        </a>
+                </div>
+            </div>
             <a href="#" data-target="mobilenav" class="sidenav-trigger yellow-text">
                 <i class="material-icons">menu</i>
             </a>
@@ -212,11 +245,16 @@
             <p>We'll use this data to help provide better resources and help more kids!</p>
         </div>
         <div class="row">
-            <form action="#" method="post" id="emailSignup" class="validation">
+            <div id="response">
+
+            </div>
+            <form action="" method="post" id="emailSignup" >
+                {% csrf_token %}
                 <div class="row">
                     <div class="col s8 offset-s1 input-field">
-                        <input type="text" name="email" id="email">
+                        <input type="email" name="email" id="email" class="validation">
                         <label for="email">Input your email</label>
+                        <span class="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                 </div>
                 <div class="row">
@@ -236,7 +274,18 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 offset-s1 input-field">
+                    <div class="col s10 offset-s1 m4 offset-m1 l4 offset-l1 input-field">
+                        <p>Which of the following best describes you:</p>
+                        <select name="relationship" id="relationship" class="browser-default">
+                            <option value="" selected disabled>--</option>
+                            <option value="families">Parent/Guardian/Youth</option>
+                            <option value="provider">provider</option>
+                            <option value="org">organization</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s10 offset-s1 input-field">
                         <p>Sign up for our newsletter and we'll send you links</p>
                         <p> to resources, events, and updates by email.</p>
                         <p>
@@ -266,17 +315,7 @@
                             </label>
                         </p>
                     </div>
-                    <div class="row">
-                            <div class="col s10 offset-s1 m4 offset-m1 l4 offset-l1 input-field">
-                                <p>Which of the following best describes you:</p>
-                                <select name="relationship" id="relationship" class="browser-default">
-                                    <option value="" selected disabled>--</option>
-                                    <option value="families">Parent/Guardian/Youth</option>
-                                    <option value="provider">provider</option>
-                                    <option value="org">organization</option>
-                                </select>
-                            </div>
-                        </div>
+                    
                 </div>
             </form>
         </div>
@@ -288,17 +327,14 @@
     <div class="section"></div>
     <div class="container">
         <div class="row">
-            <!-- supposed to be a slider/caruosel -->
             <div class="slider">
                 <ul class="slides">
                     <li>
                         <img src="{%static 'setForSummer_app/images/3kids.jpg'%}">
-                        <!-- random image -->
                         <div class="caption center-align">
                             <div class="section"></div>
                             <div class="section"></div>
-                            <h3 class="blue-text text-darken-2">Food Resources</h3>
-                            <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
+                            <h3 class="slider-text">Food Resources</h3>
                         </div>
                     </li>
                     <li>
@@ -306,16 +342,14 @@
                         <div class="caption center-align">
                             <div class="section"></div>
                             <div class="section"></div>
-                            <h3 class="">Activites</h3>
-                            <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
+                            <h3 class="slider-text">Activites</h3>
                         </div>
                     </li>
                     <li>
                         <img src="{%static 'setForSummer_app/images/kidreading.jpg'%}">
                         <div class="caption center-align">
                             <div class="section"></div>
-                            <h3 class="blue-text text-darken-2">Learning Opportunities</h3>
-                            <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
+                            <h3 class="slider-text ">Learning Opportunities</h3>
                         </div>
                     </li>
                 </ul>
@@ -443,6 +477,11 @@
         </div>
     </footer>
 
+    <script>
+        $(window).scroll(function(){
+            $('#top-btn').show();
+        });
+    </script>
 </body>
 
 </html>

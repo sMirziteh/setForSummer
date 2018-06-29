@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^learning$', views.learning),
     url(r'^faqs$', views.faqs),
     url(r'^contact$', views.contact),
+    url(r'^signup$', views.signup),
 ]
